@@ -61,4 +61,11 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
+	@Test
+	public void TachographTest() {
+		user.overrideJoystickPosition(5);
+		controller.followSpeed();
+		controller.storeTachographData();
+		Assert.assertEquals(1, controller.tachograph.size());
+	}
 }

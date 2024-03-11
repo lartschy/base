@@ -13,11 +13,11 @@ public class TrainControllerImpl implements TrainController {
 		if (referenceSpeed < 0) {
 			referenceSpeed = 0;
 		} else {
-		    if(referenceSpeed+step > 0) {
-                referenceSpeed += step;
-            } else {
-		        referenceSpeed = 0;
-            }
+			if (referenceSpeed + step > 0) {
+				referenceSpeed += step;
+			} else {
+				referenceSpeed = 0;
+			}
 		}
 
 		enforceSpeedLimit();
@@ -32,7 +32,7 @@ public class TrainControllerImpl implements TrainController {
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 		enforceSpeedLimit();
-		
+
 	}
 
 	private void enforceSpeedLimit() {
@@ -43,12 +43,17 @@ public class TrainControllerImpl implements TrainController {
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition;		
+		this.step = joystickPosition;
 	}
 
 	@Override
 	public void setEmergencyStop(boolean emergencyStop) {
 		referenceSpeed = 0;
+	}
+
+	@Override
+	public void storeTachographData() {
+		tachograph.put(new Date(), this.step, referenceSpeed);
 	}
 
 }
