@@ -54,7 +54,7 @@ public class TrainSystemTest {
 
 	@Test
 	public void EmergencyStopTest() {
-		user.overrideJoystickPosition(5);
+		user.overrideJoystickPosition(6);
 		controller.followSpeed();
 		user.triggerEmergencyStop();
 		Assert.assertEquals(0, controller.getReferenceSpeed());
